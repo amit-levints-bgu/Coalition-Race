@@ -9,7 +9,8 @@ class Coalition
 public:
     Coalition(int mandates, int first_party);
 
+
 private:
-    vector<Party> parties;
+    vector<int> partiesIDs;
     int mandates;
 };
