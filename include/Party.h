@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <vector>
 
 using std::string;
 
@@ -23,6 +24,7 @@ public:
     int getMandates() const;
     void step(Simulation &s);
     const string &getName() const;
+    void offer(int party_id);
 
 private:
     int mId;
@@ -31,4 +33,5 @@ private:
     JoinPolicy *mJoinPolicy;
     State mState;
     int timer;
+    std::vector<int> party_offers;
 };

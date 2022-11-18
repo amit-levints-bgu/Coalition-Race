@@ -30,8 +30,15 @@ void Party::step(Simulation &s)
     if (timer < 3 && mState == '1'){
         timer++;
     } else if (timer = 3 && mState == '1'){
-
+        for(int party_id: party_offers) {
+            
+        }
     } else if (mState == '2'){
         
     }
+}
+
+void Party::offer(int party_id)
+{
+    party_offers.push_back(party_id);
 }

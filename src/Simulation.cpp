@@ -2,7 +2,11 @@
 
 Simulation::Simulation(Graph graph, vector<Agent> agents) : mGraph(graph), mAgents(agents) 
 {
-    // You can change the implementation of the constructor, but not the signature!
+    for (Agent agent: mAgents) {
+        vector<int> vec;
+        vec.push_back(agent.getId());
+        coalitions.push_back(vec);
+    }
 }
 
 void Simulation::step()
@@ -41,5 +45,5 @@ const Party &Simulation::getParty(int partyId) const
 const vector<vector<int>> Simulation::getPartiesByCoalitions() const
 {
     // TODO: you MUST implement this method for getting proper output, read the documentation above.
-    return vector<vector<int>>();
+    return coalitions;
 }

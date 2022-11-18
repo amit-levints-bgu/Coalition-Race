@@ -4,6 +4,8 @@
 
 #include "Graph.h"
 #include "Agent.h"
+#include "../include/Coalition.h"
+
 
 using std::string;
 using std::vector;
@@ -24,4 +26,5 @@ public:
 private:
     Graph mGraph;
     vector<Agent> mAgents;
+    vector<vector<int>> coalitions;
 };
