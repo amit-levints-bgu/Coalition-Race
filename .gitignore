@@ -29,3 +29,5 @@ Temporary Items
 .devcontainer/devcontainer.json
 .devcontainer/Dockerfile
 .devcontainer/reinstall-cmake.sh
+.vscode/tasks.json
+.vscode/launch.json

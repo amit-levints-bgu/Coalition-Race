@@ -27,5 +27,11 @@ const string & Party::getName() const
 
 void Party::step(Simulation &s)
 {
-    // TODO: implement this method
+    if (timer < 3 && mState == '1'){
+        timer++;
+    } else if (timer = 3 && mState == '1'){
+
+    } else if (mState == '2'){
+        
+    }
 }

@@ -1,4 +1,4 @@
-#include "Graph.h"
+#include "../include/Graph.h"
 
 Graph::Graph(vector<Party> vertices, vector<vector<int>> edges) : mVertices(vertices), mEdges(edges) 
 {
@@ -23,4 +23,8 @@ int Graph::getNumVertices() const
 const Party &Graph::getParty(int partyId) const
 {
     return mVertices[partyId];
+}
+
+vector<Party> Graph::getParties(){
+    return mVertices;
 }
