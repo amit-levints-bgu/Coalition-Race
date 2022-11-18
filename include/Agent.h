@@ -18,4 +18,6 @@ private:
     int mAgentId;
     int mPartyId;
     SelectionPolicy *mSelectionPolicy;
+    Party findMandateParty(vector<int>, Graph &);
+    Party findEdgeWeightParty(vector<int>, Graph &);
 };
