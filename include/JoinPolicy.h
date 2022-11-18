@@ -1,6 +1,9 @@
 #pragma once
 
-class JoinPolicy {};
+class JoinPolicy {
+    public:
+        static void join_policiy();
+};
 
 class MandatesJoinPolicy : public JoinPolicy {};
 
