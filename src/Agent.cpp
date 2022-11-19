@@ -1,6 +1,7 @@
 #include "Agent.h"
 #include "Graph.h"
 #include "Simulation.h"
+#include "SelectionPolicy.h"
 // #include "Party.h"
 
 Agent::Agent(int agentId, int partyId, SelectionPolicy *selectionPolicy) : mAgentId(agentId), mPartyId(partyId), mSelectionPolicy(selectionPolicy)
@@ -18,7 +19,7 @@ int Agent::getPartyId() const
     return mPartyId;
 }
 
-Party Agent::findMandateParty(vector<int> neighbors, Graph &g)
+int MandatesSelectionPolicy::select(vector<int> neighbors, Graph &g, Agent agent)
 {
     int mandatePartyID;
     int maxMandate =0 ;
@@ -30,22 +31,22 @@ Party Agent::findMandateParty(vector<int> neighbors, Graph &g)
             mandatePartyID = neighbors[i];
         }
     }
-    return g.getParty(mandatePartyID);
+    return mandatePartyID;
 }
 
-Party Agent::findEdgeWeightParty(vector<int> neighbors, Graph &g)
+int EdgeWeightSelectionPolicy::select(vector<int> neighbors, Graph &g, Agent agent)
 {
     int edgePartyID;
     int maxEdge =0 ;
     for(int i=0; i < neighbors.size(); i++){
-        int currentEdge = g.getEdgeWeight(mPartyId,i);
+        int currentEdge = g.getEdgeWeight(agent.getPartyId(),i);
         if(maxEdge < currentEdge) 
         {
             maxEdge = currentEdge;
             edgePartyID = neighbors[i];
         }
     }
-    return g.getParty(edgePartyID);
+    return edgePartyID;
 }
 
 void Agent::step(Simulation &sim)
