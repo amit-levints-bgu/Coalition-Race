@@ -24,7 +24,7 @@ public:
     int getMandates() const;
     void step(Simulation &s);
     const string &getName() const;
-    void offer(int party_id);
+    void offer(int partyid);
 
 private:
     int mId;
