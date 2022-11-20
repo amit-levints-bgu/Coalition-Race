@@ -4,6 +4,7 @@ Simulation::Simulation(Graph graph, vector<Agent> agents) : mGraph(graph), mAgen
 {
     for (Agent agent: mAgents) {
         vector<int> vec;
+<<<<<<< HEAD
         vec.push_back(agent.getId());
         
         int AgentMan = mGraph.getParty(agent.getPartyId()).getMandates();
@@ -15,6 +16,10 @@ Simulation::Simulation(Graph graph, vector<Agent> agents) : mGraph(graph), mAgen
         Coalitions.push_back(newCoalition);
        
         // coalitions.push_back(vec);
+=======
+        vec.push_back(agent.getPartyId());
+        coalitions.push_back(vec);
+>>>>>>> master
     }
 }
 
@@ -47,6 +52,13 @@ const vector<Agent> &Simulation::getAgents() const
 const Party &Simulation::getParty(int partyId) const
 {
     return mGraph.getParty(partyId);
+}
+
+void Simulation::join_coalition(int join_partyId, int join_party_mandates, int coalition_partyId) 
+{
+    // TODO implement this method
+    // create new agent and insert to Agent vector
+    // insert the partyId to coallition
 }
 
 /// This method returns a "coalition" vector, where each element is a vector of party IDs in the coalition.

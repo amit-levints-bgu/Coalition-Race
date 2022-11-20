@@ -31,3 +31,4 @@ Temporary Items
 .devcontainer/reinstall-cmake.sh
 .vscode/tasks.json
 .vscode/launch.json
+.vscode/settings.json
