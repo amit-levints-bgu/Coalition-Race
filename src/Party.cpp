@@ -1,8 +1,9 @@
 #include "Party.h"
+#include "../include/JoinPolicy.h"
 
 Party::Party(int id, string name, int mandates, JoinPolicy *jp) : mId(id), mName(name), mMandates(mandates), mJoinPolicy(jp), mState(Waiting) 
 {
-    // You can change the implementation of the constructor, but not the signature!
+    timer = 0;
 }
 
 State Party::getState() const
@@ -27,14 +28,13 @@ const string & Party::getName() const
 
 void Party::step(Simulation &s)
 {
-    if (timer < 3 && mState == '1'){
+    if(mState == Waiting){
+        mState = CollectingOffers;
+    } else if (timer < 3 && mState == CollectingOffers){
         timer++;
-    } else if (timer = 3 && mState == '1'){
-        for(int party_id: party_offers) {
-            
-        }
-    } else if (mState == '2'){
-        
+    } else if (timer = 3 && mState == CollectingOffers){
+        mJoinPolicy->join_coalition(party_offers, s, mId);
+        mState = Joined;
     }
 }
 
