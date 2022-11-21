@@ -2,10 +2,64 @@
 #include "../include/JoinPolicy.h"
 using std::vector;
 
+// constructor
 Party::Party(int id, string name, int mandates, JoinPolicy *jp) : mId(id), mName(name), mMandates(mandates), mJoinPolicy(jp), mState(Waiting) 
 {
     timer = 0;
-    party_offers;
+}
+
+// destructor
+ Party::~Party(){
+    if(mJoinPolicy){
+        delete mJoinPolicy;
+    }
+ }
+
+// copy constructor
+ Party::Party(const Party &other){
+    if(this != &other){
+        mId = other.mId;
+        mName = other.mName;
+        mMandates = other.mMandates;
+        mState = other.mState;
+        mJoinPolicy = other.mJoinPolicy->clone();
+        timer = other.timer;
+        for(int offer: other.party_offers){
+            party_offers.push_back(offer);
+        }
+    }
+ }
+
+// copy assigmnet operator
+Party& Party::operator=(const Party &other){
+    if(this != &other){
+        mId = other.mId;
+        mName = other.mName;
+        mMandates = other.mMandates;
+        mState = other.mState;
+        *mJoinPolicy = (*(other.mJoinPolicy));
+        timer = other.timer;
+        for(int offer: other.party_offers){
+            party_offers.push_back(offer);
+        }
+    }
+    return *this;
+}
+
+// move constructor
+ Party::Party(Party &&other){
+    if(this != &other){     
+        mJoinPolicy = other.mJoinPolicy;
+        other.mJoinPolicy = nullptr;
+    }
+}
+
+// move assigment operator
+Party& Party::operator=(Party &&other){
+    if(mJoinPolicy) delete mJoinPolicy;
+    mJoinPolicy = other.mJoinPolicy;
+    other.mJoinPolicy = nullptr;
+    return *this;
 }
 
 State Party::getState() const
