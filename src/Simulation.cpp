@@ -2,6 +2,7 @@
 
 Simulation::Simulation(Graph graph, vector<Agent> agents) : mGraph(graph), mAgents(agents) 
 {
+    int max_agentId = 0;
     for (Agent agent: mAgents) {
         vector<int> vec;
         vec.push_back(agent.getPartyId());
@@ -13,7 +14,12 @@ Simulation::Simulation(Graph graph, vector<Agent> agents) : mGraph(graph), mAgen
         std:: tuple<int,vector<int>> newCoalition;
         newCoalition = make_tuple(AgentMan,CoalitionParty);
         Coalitions.push_back(newCoalition);
+
+        if(max_agentId < agent.getId()){
+            max_agentId = agent.getId();
+        }
     }
+    AgentCounter = max_agentId;
 }
 
 void Simulation::step()
@@ -56,9 +62,23 @@ const Party &Simulation::getParty(int partyId) const
 
 void Simulation::join_coalition(int join_partyId, int join_party_mandates, int coalition_partyId) 
 {
-    // TODO implement this method
     // create new agent and insert to Agent vector
     // insert the partyId to coallition
+    Agent new_agent;
+    AgentCounter++;
+    for(Agent agent : mAgents){
+        if(agent.getPartyId() == coalition_partyId){
+            new_agent = Agent(AgentCounter, coalition_partyId, agent.getPolicy()); 
+        }
+    }
+    for(std::tuple<int, vector<int>> T: Coalitions){
+        for(int i: std::get<1>(T)){
+            if(i == coalition_partyId){
+                std::get<1>(T).push_back(join_partyId);
+                std::get<0>(T) = std::get<0>(T) + join_party_mandates;
+            }
+        }
+    }
 }
 
 /// This method returns a "coalition" vector, where each element is a vector of party IDs in the coalition.
@@ -71,5 +91,4 @@ const vector<vector<int>> Simulation::getPartiesByCoalitions() const
         CoalitionsID.push_back(std::get<1>(T));
     }
     return CoalitionsID;
-
 }

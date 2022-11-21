@@ -31,8 +31,6 @@ public:
 private:
     Graph mGraph;
     vector<Agent> mAgents;
-    //vector<vector<int>> coalitions;
     vector<std:: tuple< int,vector<int>>> Coalitions;
-
-
+    int AgentCounter;
 };

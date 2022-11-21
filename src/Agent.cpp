@@ -50,3 +50,8 @@ void Agent::step(Simulation &sim)
     }
 
 }
+
+SelectionPolicy* Agent::getPolicy()
+{
+    return mSelectionPolicy;
+}
