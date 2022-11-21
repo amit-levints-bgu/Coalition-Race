@@ -22,6 +22,7 @@ public:
     State getState() const;
     void setState(State state);
     int getMandates() const;
+    vector<int> getMyOffer();
     void step(Simulation &s);
     const string &getName() const;
     void offer(int partyid);

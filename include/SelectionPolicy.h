@@ -2,18 +2,15 @@
 
 class SelectionPolicy {
      public:
-        virtual int select(vector<int> , Graph &, Agent) = 0;
-        virtual ~SelectionPolicy() {};
+        virtual int select(vector<int> , Graph &, Agent, vector<int>) = 0;
  };
 
 class MandatesSelectionPolicy: public SelectionPolicy{
     public:
-        virtual int select(vector<int> , Graph &, Agent);
-        virtual ~MandatesSelectionPolicy();
+        virtual int select(vector<int> , Graph &, Agent, vector<int>);
  };
 
 class EdgeWeightSelectionPolicy: public SelectionPolicy{
      public:
-        virtual int select(vector<int> , Graph &, Agent);
-        virtual ~EdgeWeightSelectionPolicy();
+        virtual int select(vector<int> , Graph &, Agent, vector<int>);
  };

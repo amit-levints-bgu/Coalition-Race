@@ -2,9 +2,10 @@
 #include "Agent.h"
 #include "Graph.h"
 #include "Simulation.h"
+#include <algorithm>
 
 //TODO: add rule of 5
-int MandatesSelectionPolicy::select(vector<int> neighbors, Graph &g, Agent agent)
+int MandatesSelectionPolicy::select(vector<int> neighbors, Graph &g, Agent agent, vector<int> agentCoalition)
 {
     //TODO: verify if the party get offer from my colition
     int mandatePartyID = -1;
@@ -12,23 +13,50 @@ int MandatesSelectionPolicy::select(vector<int> neighbors, Graph &g, Agent agent
     for(int i=0; i < neighbors.size(); i++){
         Party currentParty = g.getParty(neighbors[i]);
         int currentMandates = currentParty.getMandates();
-        if(maxMandate < currentMandates && currentParty.getState() != Joined) 
-        {
-            maxMandate = currentMandates;
-            mandatePartyID = neighbors[i];
+        vector<int> partyOffers = currentParty.getMyOffer();
+        bool getOfferFromMyCoalition = false;
+        
+        //check if the neighbor party have offer from my coalition
+        for(int offerId:partyOffers){
+            if (std::count(agentCoalition.begin(), agentCoalition.end(), offerId))
+            {
+                getOfferFromMyCoalition = true;
+                break;
+            }
         }
+
+        //check if the party mandats are the highest 
+        if(maxMandate < currentMandates && currentParty.getState() != Joined && getOfferFromMyCoalition == false) 
+        {
+                maxMandate = currentMandates;
+                mandatePartyID = neighbors[i];
+        }
+
     }
     return mandatePartyID;
 }
 
-int EdgeWeightSelectionPolicy::select(vector<int> neighbors, Graph &g, Agent agent)
+int EdgeWeightSelectionPolicy::select(vector<int> neighbors, Graph &g, Agent agent, vector<int> agentCoalition)
 {
     int edgePartyID = -1;
     int maxEdge =0 ;
     for(int i=0; i < neighbors.size(); i++){
         Party currentParty = g.getParty(neighbors[i]);
         int currentEdge = g.getEdgeWeight(agent.getPartyId(),i);
-        if(maxEdge < currentEdge && currentParty.getState() !=  Joined) 
+        vector<int> partyOffers = currentParty.getMyOffer();
+        bool getOfferFromMyCoalition = false;
+        
+        //check if the neighbor party have offer from my coalition
+        for(int offerId:partyOffers){
+            if (std::count(agentCoalition.begin(), agentCoalition.end(), offerId))
+            {
+                getOfferFromMyCoalition = true;
+                break;
+            }
+        }
+        
+        //check if the party edge are the highest
+        if(maxEdge < currentEdge && currentParty.getState() !=  Joined && getOfferFromMyCoalition == false) 
         {
             maxEdge = currentEdge;
             edgePartyID = neighbors[i];
