@@ -36,6 +36,13 @@ int MandatesSelectionPolicy::select(vector<int> neighbors, Graph &g, Agent agent
     return mandatePartyID;
 }
 
+
+MandatesSelectionPolicy* MandatesSelectionPolicy::clone()
+{
+    return new MandatesSelectionPolicy(*this);
+}
+
+
 int EdgeWeightSelectionPolicy::select(vector<int> neighbors, Graph &g, Agent agent, vector<int> agentCoalition)
 {
     int edgePartyID = -1;
@@ -63,4 +70,9 @@ int EdgeWeightSelectionPolicy::select(vector<int> neighbors, Graph &g, Agent age
         }
     }
     return edgePartyID;
+}
+
+EdgeWeightSelectionPolicy* EdgeWeightSelectionPolicy::clone()
+{
+    return new EdgeWeightSelectionPolicy(*this);
 }

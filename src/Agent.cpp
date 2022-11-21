@@ -48,10 +48,48 @@ void Agent::step(Simulation &sim)
         Party partyOffer = graph.getParty(partyOfferID);
         partyOffer.offer(this->getPartyId());
     }
-
 }
 
 SelectionPolicy* Agent::getPolicy()
 {
     return mSelectionPolicy;
+}
+
+//destractor
+Agent::~Agent(){
+    if(mSelectionPolicy) {delete mSelectionPolicy;}
+}
+
+//copy constractor
+Agent::Agent(const Agent &other){
+    SelectionPolicy *newSelectionPolicy = mSelectionPolicy->clone();
+    Agent(other.getId(),other.getPartyId(),newSelectionPolicy);
+}
+
+//copy assignment operator
+Agent& Agent::operator=(const Agent &other){
+    if(this != &other)
+    {
+        if(mSelectionPolicy) delete mSelectionPolicy;
+        *mSelectionPolicy = (*(other.mSelectionPolicy));
+    }
+
+    this->mAgentId = other.getId();
+    this->mPartyId = other.getPartyId();
+    return *this;
+}
+
+//move constractor
+Agent::Agent(Agent &&other){
+    mSelectionPolicy = other.mSelectionPolicy;
+    this->mAgentId = other.getId();
+    this->mPartyId = other.getPartyId();
+    other.mSelectionPolicy = nullptr;
+}
+
+//move assignment operator
+Agent& Agent::operator=(Agent &&other){
+    mSelectionPolicy = other.mSelectionPolicy;
+    mAgentId = other.getId();
+    mPartyId = other.getPartyId();
 }
