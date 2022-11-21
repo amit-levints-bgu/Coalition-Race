@@ -1,7 +1,6 @@
-#include "Agent.h"
-#include "Graph.h"
-#include "Simulation.h"
-#include "SelectionPolicy.h"
+#include "../include/Agent.h"
+#include "../include/Simulation.h"
+#include "../include/SelectionPolicy.h"
 #include <algorithm>
 
 

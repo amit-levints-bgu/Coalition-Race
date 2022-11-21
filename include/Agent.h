@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-#include "Graph.h"
+#include "../include/Graph.h"
 
 class SelectionPolicy;
 
@@ -13,7 +13,7 @@ public:
     int getPartyId() const;
     int getId() const; 
     void step(Simulation &);
-    SelectionPolicy* Agent::getPolicy();
+    SelectionPolicy* getPolicy();
     virtual ~Agent();
     Agent(const Agent &other);
     Agent& operator=(const Agent &other);

@@ -21,13 +21,13 @@ public:
     virtual ~Party();
     Party(const Party &other);
     Party& operator=(const Party &other); 
-    Party::Party(Party &&other);
-    Party& Party::operator=(Party &&other);
+    Party(Party &&other);
+    Party& operator=(Party &&other);
 
     State getState() const;
     void setState(State state);
     int getMandates() const;
-    vector<int> getMyOffer();
+    std::vector<int> getMyOffer();
     void step(Simulation &s);
     const string &getName() const;
     void offer(int partyid);

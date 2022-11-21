@@ -1,4 +1,4 @@
-#include "Party.h"
+#include "../include/Party.h"
 #include "../include/JoinPolicy.h"
 using std::vector;
 
