@@ -1,8 +1,11 @@
 #pragma once
+#include <vector>
+#include "../include/Graph.h"
+#include "../include/Agent.h"
 
 class SelectionPolicy {
      public:
-        virtual int select(vector<int> , Graph &, Agent, vector<int>) = 0;
+        virtual int select(std::vector<int> , Graph &, Agent, std::vector<int>) = 0;
         virtual SelectionPolicy* clone() =0 ;
  };
 
