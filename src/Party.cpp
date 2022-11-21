@@ -1,9 +1,11 @@
 #include "Party.h"
 #include "../include/JoinPolicy.h"
+using std::vector;
 
 Party::Party(int id, string name, int mandates, JoinPolicy *jp) : mId(id), mName(name), mMandates(mandates), mJoinPolicy(jp), mState(Waiting) 
 {
     timer = 0;
+    party_offers;
 }
 
 State Party::getState() const
@@ -24,6 +26,11 @@ int Party::getMandates() const
 const string & Party::getName() const
 {
     return mName;
+}
+
+vector<int> Party::getMyOffer()
+{
+    return party_offers;
 }
 
 void Party::step(Simulation &s)
