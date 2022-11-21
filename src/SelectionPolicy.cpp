@@ -1,7 +1,7 @@
-#include "SelectionPolicy.h"
-#include "Agent.h"
-#include "Graph.h"
-#include "Simulation.h"
+#include "../include/SelectionPolicy.h"
+#include "../include/Agent.h"
+#include "../include/Graph.h"
+#include "../include/Simulation.h"
 #include <algorithm>
 
 //TODO: add rule of 5
