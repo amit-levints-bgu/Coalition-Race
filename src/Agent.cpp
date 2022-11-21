@@ -30,3 +30,8 @@ void Agent::step(Simulation &sim)
     Party partyOffer = graph.getParty(partyOfferID);
     partyOffer.offer(this->getPartyId());
 }
+
+SelectionPolicy* Agent::getPolicy()
+{
+    return mSelectionPolicy;
+}
