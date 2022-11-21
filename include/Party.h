@@ -18,6 +18,11 @@ class Party
 {
 public:
     Party(int id, string name, int mandates, JoinPolicy *); 
+    virtual ~Party();
+    Party(const Party &other);
+    Party& operator=(const Party &other); 
+    Party::Party(Party &&other);
+    Party& Party::operator=(Party &&other);
 
     State getState() const;
     void setState(State state);
