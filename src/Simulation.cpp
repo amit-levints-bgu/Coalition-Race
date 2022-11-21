@@ -34,8 +34,15 @@ void Simulation::step()
 
 bool Simulation::shouldTerminate() const
 {
-    // TODO implement this method
-    return true;
+    int countJoinedParty =0;
+    for(std::tuple<int, vector<int>> T: Coalitions){
+        if(std::get<0>(T)>60)
+            return true;
+        countJoinedParty += std::get<1>(T).size();
+    }
+    if(countJoinedParty == getGraph().getNumVertices())
+        return true;
+    return false;
 }
 
 const Graph &Simulation::getGraph() const
