@@ -4,8 +4,7 @@ Simulation::Simulation(Graph graph, vector<Agent> agents) : mGraph(graph), mAgen
 {
     for (Agent agent: mAgents) {
         vector<int> vec;
-<<<<<<< HEAD
-        vec.push_back(agent.getId());
+        vec.push_back(agent.getPartyId());
         
         int AgentMan = mGraph.getParty(agent.getPartyId()).getMandates();
         vector<int> CoalitionParty;
@@ -14,12 +13,6 @@ Simulation::Simulation(Graph graph, vector<Agent> agents) : mGraph(graph), mAgen
         std:: tuple<int,vector<int>> newCoalition;
         newCoalition = make_tuple(AgentMan,CoalitionParty);
         Coalitions.push_back(newCoalition);
-       
-        // coalitions.push_back(vec);
-=======
-        vec.push_back(agent.getPartyId());
-        coalitions.push_back(vec);
->>>>>>> master
     }
 }
 

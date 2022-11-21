@@ -28,5 +28,5 @@ void Agent::step(Simulation &sim)
     }
     int partyOfferID = mSelectionPolicy->select(neighbors,graph,*this);
     Party partyOffer = graph.getParty(partyOfferID);
-    partyOffer.offer(this->getPartyId(),sim);
+    partyOffer.offer(this->getPartyId());
 }
