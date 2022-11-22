@@ -9,7 +9,7 @@ Agent::Agent(int agentId, int partyId, SelectionPolicy *selectionPolicy) : mAgen
     // You can change the implementation of the constructor, but not the signature!
 }
 
-Agent::Agent(){}
+Agent::Agent(): mAgentId(), mPartyId(), mSelectionPolicy(){}
 
 int Agent::getId() const
 {
@@ -23,11 +23,15 @@ int Agent::getPartyId() const
 
 vector<int> Agent::findMyCoalition(Simulation &sim){
     vector<vector<int>> CoalitionIDs = sim.getPartiesByCoalitions();
+    vector<int> AnsCoalition;
     for(vector<int> coalition: CoalitionIDs )
     {
-        if (std::count(coalition.begin(), coalition.end(), mPartyId))
-            return coalition;
+        if (std::count(coalition.begin(), coalition.end(), mPartyId)){
+            AnsCoalition=coalition;
+            return AnsCoalition;
+        }
     }
+    return AnsCoalition;
 }
 
 void Agent::step(Simulation &sim)
@@ -62,7 +66,7 @@ Agent::~Agent(){
 }
 
 //copy constractor
-Agent::Agent(const Agent &other){
+Agent::Agent(const Agent &other): mAgentId(), mPartyId(), mSelectionPolicy(){
     SelectionPolicy *newSelectionPolicy = mSelectionPolicy->clone();
     mAgentId = other.getId();
     mPartyId  = other.getPartyId();
@@ -83,7 +87,7 @@ Agent& Agent::operator=(const Agent &other){
 }
 
 //move constractor
-Agent::Agent(Agent &&other){
+Agent::Agent(Agent &&other): mAgentId(), mPartyId(), mSelectionPolicy(){
     mSelectionPolicy = other.mSelectionPolicy;
     this->mAgentId = other.getId();
     this->mPartyId = other.getPartyId();
@@ -95,4 +99,5 @@ Agent& Agent::operator=(Agent &&other){
     mSelectionPolicy = other.mSelectionPolicy;
     mAgentId = other.getId();
     mPartyId = other.getPartyId();
+    return *this;
 }

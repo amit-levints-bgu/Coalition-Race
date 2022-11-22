@@ -1,6 +1,6 @@
 #include "../include/Simulation.h"
 
-Simulation::Simulation(Graph graph, vector<Agent> agents) : mGraph(graph), mAgents(agents), AgentCounter(0), Coalitions()
+Simulation::Simulation(Graph graph, vector<Agent> agents) : mGraph(graph), mAgents(agents), Coalitions(), AgentCounter()
 {
     vector<std:: tuple< int,vector<int>>> Coalitions;
     int max_agentId = 0;
