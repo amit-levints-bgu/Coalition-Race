@@ -10,7 +10,7 @@ int MandatesSelectionPolicy::select(vector<int> neighbors, Graph &g, Agent agent
     //TODO: verify if the party get offer from my colition
     int mandatePartyID = -1;
     int maxMandate =0 ;
-    for(int i=0; i < neighbors.size(); i++){
+    for(int i=0; (unsigned)i < neighbors.size(); i++){
         Party currentParty = g.getParty(neighbors[i]);
         int currentMandates = currentParty.getMandates();
         vector<int> partyOffers = currentParty.getMyOffer();
@@ -47,7 +47,7 @@ int EdgeWeightSelectionPolicy::select(vector<int> neighbors, Graph &g, Agent age
 {
     int edgePartyID = -1;
     int maxEdge =0 ;
-    for(int i=0; i < neighbors.size(); i++){
+    for(int i=0; (unsigned)i < neighbors.size(); i++){
         Party currentParty = g.getParty(neighbors[i]);
         int currentEdge = g.getEdgeWeight(agent.getPartyId(),i);
         vector<int> partyOffers = currentParty.getMyOffer();
