@@ -93,7 +93,7 @@ void Party::step(Simulation &s)
         mState = CollectingOffers;
     } else if (timer < 3 && mState == CollectingOffers){
         timer++;
-    } else if (timer = 3 && mState == CollectingOffers){
+    } else if (timer == 3 && mState == CollectingOffers){
         mJoinPolicy->join_coalition(party_offers, s, mId);
         mState = Joined;
     }
