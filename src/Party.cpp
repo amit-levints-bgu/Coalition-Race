@@ -3,9 +3,8 @@
 using std::vector;
 
 // constructor
-Party::Party(int id, string name, int mandates, JoinPolicy *jp) : mId(id), mName(name), mMandates(mandates), mJoinPolicy(jp), mState(Waiting) 
+Party::Party(int id, string name, int mandates, JoinPolicy *jp) : mId(id), mName(name), mMandates(mandates), mJoinPolicy(jp), mState(Waiting), timer(0), party_offers()
 {
-    timer = 0;
 }
 
 // destructor
@@ -16,14 +15,8 @@ Party::Party(int id, string name, int mandates, JoinPolicy *jp) : mId(id), mName
  }
 
 // copy constructor
- Party::Party(const Party &other){
+ Party::Party(const Party &other): mId(other.mId), mName(other.mName), mMandates(other.mMandates), mJoinPolicy(other.mJoinPolicy->clone()), mState(other.mState), timer(other.timer), party_offers(){
     if(this != &other){
-        mId = other.mId;
-        mName = other.mName;
-        mMandates = other.mMandates;
-        mState = other.mState;
-        mJoinPolicy = other.mJoinPolicy->clone();
-        timer = other.timer;
         for(int offer: other.party_offers){
             party_offers.push_back(offer);
         }
@@ -47,9 +40,8 @@ Party& Party::operator=(const Party &other){
 }
 
 // move constructor
- Party::Party(Party &&other){
+ Party::Party(Party &&other): mId(other.mId), mName(other.mName), mMandates(other.mMandates), mJoinPolicy(other.mJoinPolicy), mState(other.mState), timer(other.timer), party_offers(){
     if(this != &other){     
-        mJoinPolicy = other.mJoinPolicy;
         other.mJoinPolicy = nullptr;
     }
 }
