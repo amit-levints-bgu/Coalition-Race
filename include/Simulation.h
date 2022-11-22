@@ -5,7 +5,6 @@
 
 #include "Graph.h"
 #include "Agent.h"
-#include "../include/Coalition.h"
 
 
 using std::string;

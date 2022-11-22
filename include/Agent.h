@@ -10,11 +10,12 @@ class Agent
 public:
     Agent(int agentId, int partyId, SelectionPolicy *selectionPolicy);
     Agent();
+    virtual ~Agent();
+
     int getPartyId() const;
     int getId() const; 
     void step(Simulation &);
     SelectionPolicy* getPolicy();
-    virtual ~Agent();
     Agent(const Agent &other);
     Agent& operator=(const Agent &other);
     Agent(Agent &&other);

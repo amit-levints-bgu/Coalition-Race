@@ -1,6 +1,5 @@
 #include "../include/JoinPolicy.h"
 #include "../include/Party.h"
-#include "../include/Simulation.h"
 
 void LastOfferJoinPolicy::join_coalition(std::vector<int> offers , Simulation &s, int my_id){
     int party_id = offers.back();

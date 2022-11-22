@@ -1,6 +1,5 @@
 #include "../include/JoinPolicy.h"
 #include "../include/Party.h"
-#include "../include/Simulation.h"
 
 void MandatesJoinPolicy::join_coalition(std::vector<int> offers , Simulation &s, int my_id){
     int most_mandates = 0;

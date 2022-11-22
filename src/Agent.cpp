@@ -9,6 +9,8 @@ Agent::Agent(int agentId, int partyId, SelectionPolicy *selectionPolicy) : mAgen
     // You can change the implementation of the constructor, but not the signature!
 }
 
+Agent::Agent(){}
+
 int Agent::getId() const
 {
     return mAgentId;
