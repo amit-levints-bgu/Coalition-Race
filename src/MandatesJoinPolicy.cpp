@@ -15,6 +15,6 @@ void MandatesJoinPolicy::join_coalition(std::vector<int> offers , Simulation &s,
     s.join_coalition(most_mandates_party_id, most_mandates, my_id);
 }
 
-LastOfferJoinPolicy* LastOfferJoinPolicy::clone(){
-    return new LastOfferJoinPolicy(*this);
+ MandatesJoinPolicy*  MandatesJoinPolicy::clone(){
+    return new  MandatesJoinPolicy(*this);
 }
