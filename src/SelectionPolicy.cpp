@@ -49,7 +49,7 @@ int EdgeWeightSelectionPolicy::select(vector<int> neighbors, Graph &g, Agent age
     int maxEdge =0 ;
     for(int i=0; (unsigned)i < neighbors.size(); i++){
         Party currentParty = g.getParty(neighbors[i]);
-        int currentEdge = g.getEdgeWeight(agent.getPartyId(),i);
+        int currentEdge = g.getEdgeWeight(agent.getPartyId(),neighbors[i]);
         vector<int> partyOffers = currentParty.getMyOffer();
         bool getOfferFromMyCoalition = false;
         
