@@ -22,6 +22,16 @@ int Agent::getPartyId() const
     return mPartyId;
 }
 
+void Agent::setID(int ID)
+{
+    mAgentId = ID;
+}
+
+void Agent::setPartyID(int ID)
+{
+    mPartyId = ID;
+}
+
 vector<int> Agent::findMyCoalition(Simulation &sim){
     vector<vector<int>> CoalitionIDs = sim.getPartiesByCoalitions();
     vector<int> AnsCoalition;

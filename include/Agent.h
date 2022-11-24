@@ -15,6 +15,8 @@ public:
     int getPartyId() const;
     int getId() const; 
     void step(Simulation &);
+    void setPartyID(int);
+    void setID(int);
     SelectionPolicy* getPolicy();
     Agent(const Agent &other);
     Agent& operator=(const Agent &other);

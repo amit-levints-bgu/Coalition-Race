@@ -73,7 +73,10 @@ void Simulation::join_coalition(int join_partyId, int join_party_mandates, int c
     AgentCounter++;
     for(Agent agent : mAgents){
         if(agent.getPartyId() == coalition_partyId){
-            mAgents.push_back(Agent(AgentCounter, join_partyId, agent.getPolicy())); 
+            Agent newA = agent;
+            newA.setID(AgentCounter);
+            newA.setPartyID(join_partyId);
+            mAgents.push_back(newA); 
         }
     }
     for(std::tuple<int, vector<int>> &T: Coalitions){
