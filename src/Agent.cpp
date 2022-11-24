@@ -2,6 +2,7 @@
 #include "../include/Simulation.h"
 #include "../include/SelectionPolicy.h"
 #include <algorithm>
+#include <iostream> 
 
 
 Agent::Agent(int agentId, int partyId, SelectionPolicy *selectionPolicy) : mAgentId(agentId), mPartyId(partyId), mSelectionPolicy(selectionPolicy)
@@ -36,12 +37,15 @@ vector<int> Agent::findMyCoalition(Simulation &sim){
 
 void Agent::step(Simulation &sim)
 {
-    Graph graph = sim.getGraph();
-    
+    std::cout<< "!graph adress is" << &(sim.getG()) << std::endl;
+    Graph& graph = sim.getG();
+    std::cout<< "3graph adress is" << &(graph) << std::endl;
+    std::cout<< "3sim adress is" << &(sim) << std::endl;
+
     //find all agent neighbors
     vector<int> neighbors;
     for(int i=0; i<graph.getNumVertices(); i++) {
-        if (graph.getEdgeWeight(this->getPartyId(),i) != 0)
+        if (graph.getEdgeWeight(getPartyId(),i) != 0)
             neighbors.push_back(i);   
     }
    
@@ -50,8 +54,9 @@ void Agent::step(Simulation &sim)
    
     //check if there is a relevanc party to sent an offer
     if(partyOfferID != -1){
-        Party partyOffer = graph.getParty(partyOfferID);
-        partyOffer.offer(this->getPartyId());
+        Party& partyOffer = graph.getPartyById(partyOfferID);
+        std::cout<< "party adress is" << &(partyOffer) << std::endl;
+        partyOffer.offer(getPartyId());
     }
 }
 

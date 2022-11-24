@@ -12,8 +12,9 @@ public:
     int getEdgeWeight(int v1, int v2) const;
     int getNumVertices() const;
     const Party &getParty(int partyId) const;
-    vector<Party> getParties();
-
+    Party& getPartyById(int partyId);
+    vector<Party>& getParties();
+    Graph& operator=(const Graph other);
 private:
     vector<Party> mVertices;
     vector<vector<int>> mEdges;

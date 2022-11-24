@@ -94,4 +94,5 @@ void Party::step(Simulation &s)
 void Party::offer(int party_id)
 {
     party_offers.push_back(party_id);
+    mState = CollectingOffers;
 }

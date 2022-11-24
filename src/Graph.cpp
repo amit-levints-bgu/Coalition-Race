@@ -1,4 +1,5 @@
 #include "../include/Graph.h"
+#include <iostream> 
 
 Graph::Graph(vector<Party> vertices, vector<vector<int>> edges) : mVertices(vertices), mEdges(edges) 
 {
@@ -20,11 +21,25 @@ int Graph::getNumVertices() const
     return mVertices.size();
 }
 
-const Party &Graph::getParty(int partyId) const
+const Party& Graph::getParty(int partyId) const
 {
     return mVertices[partyId];
 }
 
-vector<Party> Graph::getParties(){
+Party& Graph::getPartyById(int partyId) 
+{
+    std::cout<< "2graph adress is" << &(*this) << std::endl;
+    return mVertices[partyId];
+}
+
+vector<Party>& Graph::getParties(){
     return mVertices;
 }
+
+// Graph& Graph::operator=(Graph other){
+//     for(Party other_party:other.mVertices){
+//         mVertices.push_back(other_party);
+//     }
+//     mEdges = other.mEdges;
+//     return *this;
+// }

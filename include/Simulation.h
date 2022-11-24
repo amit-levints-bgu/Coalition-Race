@@ -24,7 +24,7 @@ public:
     const vector<Agent> &getAgents() const;
     const Party &getParty(int partyId) const;
     const vector<vector<int>> getPartiesByCoalitions() const;
-       
+    Graph &getG();
     void join_coalition(int partyId, int mandates, int coalition_partyId);
 
 private:

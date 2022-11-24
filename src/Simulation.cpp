@@ -1,4 +1,5 @@
 #include "../include/Simulation.h"
+#include <iostream> 
 
 Simulation::Simulation(Graph graph, vector<Agent> agents) : mGraph(graph), mAgents(agents), Coalitions(), AgentCounter()
 {
@@ -24,6 +25,9 @@ Simulation::Simulation(Graph graph, vector<Agent> agents) : mGraph(graph), mAgen
 
 void Simulation::step()
 {
+    std::cout<< "1graph adress is" << &mGraph << std::endl;
+    std::cout<< "1sim adress is" << this << std::endl;
+
     for (Party p: mGraph.getParties()){
         p.step(*this);
     }
@@ -47,6 +51,13 @@ bool Simulation::shouldTerminate() const
 
 const Graph &Simulation::getGraph() const
 {
+    return mGraph;
+}
+
+Graph &Simulation::getG()
+{
+    std::cout<< "4sim adress is" << &(*this) << std::endl;
+    std::cout<< "4graph adress is" << &(mGraph) << std::endl;
     return mGraph;
 }
 
