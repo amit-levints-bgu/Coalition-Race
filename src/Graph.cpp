@@ -28,7 +28,6 @@ const Party& Graph::getParty(int partyId) const
 
 Party& Graph::getPartyById(int partyId) 
 {
-    std::cout<< "2graph adress is" << &(*this) << std::endl;
     return mVertices[partyId];
 }
 

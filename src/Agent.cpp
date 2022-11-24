@@ -52,7 +52,6 @@ void Agent::step(Simulation &sim)
     //check if there is a relevanc party to sent an offer
     if(partyOfferID != -1){
         Party& partyOffer = graph.getPartyById(partyOfferID);
-        std::cout<< "party adress is" << &(partyOffer) << std::endl;
         partyOffer.offer(getPartyId());
     }
 }
