@@ -77,8 +77,18 @@ Agent::~Agent(){
 }
 
 //copy constractor
+// Agent::Agent(const Agent &other): mAgentId(), mPartyId(), mSelectionPolicy(){
+//     if(this != &other)
+//     {
+//         mSelectionPolicy = other.mSelectionPolicy->clone();
+//         mAgentId = other.getId();
+//         mPartyId = other.getPartyId();
+//     }  
+// }
+
+
+//copy constractor
 Agent::Agent(const Agent &other): mAgentId(other.getId()), mPartyId(other.getPartyId()), mSelectionPolicy(other.mSelectionPolicy->clone()){
-   
 }
 
 //copy assignment operator

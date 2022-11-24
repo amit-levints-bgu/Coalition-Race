@@ -77,6 +77,7 @@ void Simulation::join_coalition(int join_partyId, int join_party_mandates, int c
             newA.setID(AgentCounter);
             newA.setPartyID(join_partyId);
             mAgents.push_back(newA); 
+            break;
         }
     }
     for(std::tuple<int, vector<int>> &T: Coalitions){
