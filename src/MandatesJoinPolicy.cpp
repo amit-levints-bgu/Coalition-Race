@@ -12,7 +12,7 @@ void MandatesJoinPolicy::join_coalition(std::vector<int> offers , Simulation &s,
             most_mandates_party_id = party_id;
         }
     }
-    s.join_coalition(most_mandates_party_id, most_mandates, my_id);
+    s.join_coalition(my_id, most_mandates, most_mandates_party_id);
 }
 
  MandatesJoinPolicy*  MandatesJoinPolicy::clone(){
