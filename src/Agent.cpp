@@ -37,10 +37,7 @@ vector<int> Agent::findMyCoalition(Simulation &sim){
 
 void Agent::step(Simulation &sim)
 {
-    std::cout<< "!graph adress is" << &(sim.getG()) << std::endl;
     Graph& graph = sim.getG();
-    std::cout<< "3graph adress is" << &(graph) << std::endl;
-    std::cout<< "3sim adress is" << &(sim) << std::endl;
 
     //find all agent neighbors
     vector<int> neighbors;

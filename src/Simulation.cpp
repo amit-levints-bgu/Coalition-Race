@@ -25,9 +25,6 @@ Simulation::Simulation(Graph graph, vector<Agent> agents) : mGraph(graph), mAgen
 
 void Simulation::step()
 {
-    std::cout<< "1graph adress is" << &mGraph << std::endl;
-    std::cout<< "1sim adress is" << this << std::endl;
-
     for (Party p: mGraph.getParties()){
         p.step(*this);
     }
@@ -56,8 +53,6 @@ const Graph &Simulation::getGraph() const
 
 Graph &Simulation::getG()
 {
-    std::cout<< "4sim adress is" << &(*this) << std::endl;
-    std::cout<< "4graph adress is" << &(mGraph) << std::endl;
     return mGraph;
 }
 
