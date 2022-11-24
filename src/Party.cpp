@@ -81,9 +81,7 @@ vector<int> Party::getMyOffer()
 
 void Party::step(Simulation &s)
 {
-    if(mState == Waiting){
-        mState = CollectingOffers;
-    } else if (timer < 3 && mState == CollectingOffers){
+    if (timer < 3 && mState == CollectingOffers){
         timer++;
     } else if (timer == 3 && mState == CollectingOffers){
         mJoinPolicy->join_coalition(party_offers, s, mId);
