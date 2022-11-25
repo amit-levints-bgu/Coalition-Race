@@ -14,12 +14,12 @@ class MandatesSelectionPolicy: public SelectionPolicy{
     public:
         int select(std::vector<int> , Graph &, Agent, vector<int>);
         MandatesSelectionPolicy* clone();
-        virtual ~MandatesSelectionPolicy() = default;
+        virtual ~MandatesSelectionPolicy();
  };
 
 class EdgeWeightSelectionPolicy: public SelectionPolicy{
      public:
         int select(std::vector<int> , Graph &, Agent, vector<int>);
         EdgeWeightSelectionPolicy* clone();
-        virtual ~EdgeWeightSelectionPolicy() = default;
+        virtual ~EdgeWeightSelectionPolicy();
  };

@@ -10,3 +10,5 @@ void LastOfferJoinPolicy::join_coalition(std::vector<int> offers , Simulation &s
 LastOfferJoinPolicy* LastOfferJoinPolicy::clone(){
     return new LastOfferJoinPolicy(*this);
 }
+
+LastOfferJoinPolicy::~LastOfferJoinPolicy(){}

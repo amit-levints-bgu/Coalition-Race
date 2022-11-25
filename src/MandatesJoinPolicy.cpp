@@ -18,3 +18,5 @@ void MandatesJoinPolicy::join_coalition(std::vector<int> offers , Simulation &s,
  MandatesJoinPolicy*  MandatesJoinPolicy::clone(){
     return new  MandatesJoinPolicy(*this);
 }
+
+MandatesJoinPolicy::~MandatesJoinPolicy(){}

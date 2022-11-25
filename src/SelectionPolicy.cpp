@@ -4,7 +4,6 @@
 #include "../include/Simulation.h"
 #include <algorithm>
 
-//TODO: add rule of 5
 int MandatesSelectionPolicy::select(vector<int> neighbors, Graph &g, Agent agent, vector<int> agentCoalition)
 {
     //TODO: verify if the party get offer from my colition
@@ -76,3 +75,7 @@ EdgeWeightSelectionPolicy* EdgeWeightSelectionPolicy::clone()
 {
     return new EdgeWeightSelectionPolicy(*this);
 }
+
+MandatesSelectionPolicy::~MandatesSelectionPolicy(){}
+
+EdgeWeightSelectionPolicy::~EdgeWeightSelectionPolicy(){}

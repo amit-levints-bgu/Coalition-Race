@@ -13,12 +13,12 @@ class MandatesJoinPolicy : public JoinPolicy {
     public:
         void join_coalition(std::vector<int> offers , Simulation &s, int my_id);
         MandatesJoinPolicy* clone();
-        virtual ~MandatesJoinPolicy() = default;
+        virtual ~MandatesJoinPolicy();
 };
 
 class LastOfferJoinPolicy : public JoinPolicy {
         public:
         void join_coalition(std::vector<int> offers , Simulation &s, int my_id);
         LastOfferJoinPolicy* clone();
-        virtual ~LastOfferJoinPolicy() = default;
+        virtual ~LastOfferJoinPolicy();
 };

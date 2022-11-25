@@ -30,13 +30,5 @@ int main(int argc, char **argv)
     std::ofstream outputFile(output_path);
     outputFile << std::setw(4) << json(outPerIter) << endl;
 
-    for(Agent agent : simulation.getAgents()){
-        agent.~Agent();
-    }
-    Graph g = simulation.getGraph();
-    for(Party party :g.getParties()){
-        party.~Party();
-    }
-
     return 0;
 }
