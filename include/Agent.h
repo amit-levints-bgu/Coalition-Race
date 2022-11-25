@@ -9,7 +9,6 @@ class Agent
 {
 public:
     Agent(int agentId, int partyId, SelectionPolicy *selectionPolicy);
-    Agent();
     virtual ~Agent();
 
     int getPartyId() const;
