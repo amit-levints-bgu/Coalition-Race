@@ -81,7 +81,8 @@ void Simulation::join_coalition(int join_partyId, int join_party_mandates, int c
         }
     }
     for(std::tuple<int, vector<int>> &T: Coalitions){
-        for(int &i: std::get<1>(T)){
+        vector<int> ids = std::get<1>(T);       
+        for(int i: ids){
             if(i == coalition_partyId){
                 std::get<1>(T).push_back(join_partyId);
                 std::get<0>(T) = std::get<0>(T) + join_party_mandates;
